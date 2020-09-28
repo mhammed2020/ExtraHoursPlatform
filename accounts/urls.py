@@ -11,6 +11,6 @@ path('profile/edit',views.profile_edit,name = 'profile_edit'),
 
 #user
 
-path('app/',views.app,name = 'app'),
+path('doctors/',views.doctor_list,name = 'doctor_list'),
 
 ]

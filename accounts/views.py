@@ -2,14 +2,16 @@ from django.shortcuts import render,redirect
 from .models import Profile
 from .forms import SignUpForm,ProfileForm,UserForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 
 #templates/user
 
-def app(request) :
-    
+def doctor_list(request) :
+    doctors = Profile.objects.all()
 
-    return render(request,'user/app.html',{})
+    context = {'doctors' : doctors}
+    return render(request,'user/doctor_list.html',context)
 
 
 
