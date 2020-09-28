@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from django.utils.translation import activate, ugettext as _
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
+# slug
+from django.utils.text import slugify
+
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -14,6 +19,15 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=45,null=True , blank=True)
     address = models.CharField(max_length=100 , blank=True, null=True)
   
+    #slug
+    slug = models.SlugField(_("slug"),blank=True, null=True)
+   
+   #slugify
+    def save(self,*args,**kwargs):
+        #logic
+        self.slug = slugify(self.user.username)
+        super(Profile,self).save(*args,**kwargs)
+
     class Meta:
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")

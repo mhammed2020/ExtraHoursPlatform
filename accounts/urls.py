@@ -12,5 +12,6 @@ path('profile/edit',views.profile_edit,name = 'profile_edit'),
 #user
 
 path('doctors/',views.doctor_list,name = 'doctor_list'),
+path('<slug:slug>/',views.doctor_detail,name = 'doctor_detail'),
 
 ]
