@@ -9,8 +9,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User ,verbose_name =_("user")  , on_delete=models.CASCADE)
     name = models.CharField(("الاسم :"), max_length = 60)
     who_i = models.TextField((" من انا : "), max_length = 200)
-    
-    price = models.IntegerField((" سعر الكشف "))
+    image = models.ImageField(_("صورة  شخصية "), upload_to='profile/',blank=True, null=True)
+    price = models.IntegerField((" سعر الكشف "),default=10, null=True)
     phone_number = models.CharField(max_length=45,null=True , blank=True)
     address = models.CharField(max_length=100 , blank=True, null=True)
   
